@@ -9,7 +9,17 @@ class SubjectController{
     }
     public function createAction($hola="hola")
     {
-      
+      	
+      	if (isset($_POST['name'])) {
+            $consulta = new SubjectModel();
+            
+            return $consulta->create([
+                "name"=> $_POST['name'],
+                "code"=> $_POST['code']
+                ]);
+        }
+
+
         return new View("subject/create", ["title" => "Framework", "layout" => "on", "nameLayout" => "layout"]);
     }
     public function readAction($hola="hola")
