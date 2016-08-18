@@ -11,12 +11,27 @@
     }
 
 
-    public function get($email = null, $value = null)
+    public function get( $value = null)
     {
         $query = $this->consult->getConsultar("
             SELECT *
-            FROM users
-            WHERE email = '$email' AND passord = '$value'
+            FROM subject
+            WHERE id_subject = '$value'
+        ");
+
+        while($row = $query->fetch_array(MYSQLI_ASSOC)){
+            $this->rows[] = $row;
+        }
+
+        return $this->rows;
+
+    }
+    public function getAll()
+    {
+        $query = $this->consult->getConsultar("
+            SELECT *
+            FROM subject
+            WHERE id_user = '0'
         ");
 
         while($row = $query->fetch_array(MYSQLI_ASSOC)){

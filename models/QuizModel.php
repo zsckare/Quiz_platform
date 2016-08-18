@@ -1,6 +1,6 @@
 <?php
 
-  class UserModel{
+  class QuizModel{
 
     protected $consult;
     public $rows;
@@ -11,12 +11,12 @@
     }
 
 
-    public function get($email = null, $value = null)
+    public function get($value = null)
     {
         $query = $this->consult->getConsultar("
             SELECT *
-            FROM users
-            WHERE email = '$email' AND password = '$value'
+            FROM quiz
+            WHERE id = '$value'
         ");
 
         while($row = $query->fetch_array(MYSQLI_ASSOC)){
@@ -26,28 +26,11 @@
         return $this->rows;
 
     }
-
-    public function getById($value = null)
-    {
-        $query = $this->consult->getConsultar("
-            SELECT *
-            FROM users
-            WHERE id_user = '$value'
-        ");
-
-        while($row = $query->fetch_array(MYSQLI_ASSOC)){
-            $this->rows[] = $row;
-        }
-
-        return $this->rows;
-
-    }
-
     public function getAll()
     {
         $query = $this->consult->getConsultar("
             SELECT *
-            FROM users
+            FROM quiz
         ");
 
         while($row = $query->fetch_array(MYSQLI_ASSOC)){

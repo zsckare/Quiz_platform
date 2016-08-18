@@ -11,17 +11,28 @@
 	<nav class=" light-blue darken-1" >
     <div class="nav-wrapper">
       <a href="/" class="brand-logo left">Sajis</a>
+
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/subject">Materias</a></li>
-        <li><a href="/">Components</a></li>
-        <li><a href="/">JavaScript</a></li>
-      </ul>
+      <?php if(isset($_SESSION['type'])){ ?>
+      	<?php if($_SESSION['type'] == 1){ ?>
+	      
+	        <li><a href="/subject">Materias</a></li>
+	        <li><a href="/">Components</a></li>
+	        <li><a href="/">JavaScript</a></li>
+	    
+	    <?php }?>
+      <?php }?>
+
+	<?php if (isset($_SESSION['name'])) { ?>
+		<li><a href="/session/logout">Cerrar Session</a></li>
+	<?php } ?>
+  		</ul>
     </div>
   </nav>
 
 	<div class="container">
 		<div class="row">
-			<div class="col s12 m12 l12 card padding-largo">
+			<div class="col s12 m12 l12 padding-largo">
 				<?=$yield ?>	
 			</div>
 		</div>

@@ -4,8 +4,9 @@ class SubjectController{
 
     public function indexAction($hola="hola")
     {
-      // Controlador principal en esta carpeta crear los demas controladores.
-        return new View("subject/index", ["title" => "Framework", "layout" => "on", "nameLayout" => "layout"]);
+    	$consulta = new SubjectModel();
+    	$values = $consulta->getAll();
+        return new View("subject/index", ["title" => "Framework", "layout" => "on", "nameLayout" => "layout","values"=>$values]);
     }
     public function createAction($hola="hola")
     {
@@ -23,9 +24,25 @@ class SubjectController{
         return new View("subject/create", ["title" => "Framework", "layout" => "on", "nameLayout" => "layout"]);
     }
     public function readAction($hola="hola")
-    {
+    {	
+    	$materias = new SubjectModel();
+        $inscritos = new EnrolledModel();
 
-        return new View("subject/read", ["title" => "Framework", "layout" => "on", "nameLayout" => "layout"]);
+    	$values = $materias->get($_REQUEST['subject']);
+    	$name = null;
+        $code = null;
+
+		foreach ($values as $row) {
+			$name = $row['name'];
+            $code = $row['code'];
+
+		}
+
+        $ids = $inscritos->get($code);
+
+
+
+        return new View("subject/read", ["title" => "Framework", "layout" => "on", "nameLayout" => "layout", "values"=>$name, "ids"=>$ids]);
     }
     public function updateAction($hola="hola")
     {
