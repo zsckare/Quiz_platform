@@ -4,6 +4,16 @@
 
 
 		<?=$_SESSION['type']?>
+		<?php 
+
+			$pass = Security::getEncrypt("12345");
+
+		?>
+
+		<?= $pass?>
+
+
+
 	<?php }else{ ?>
 	<div class="row">
 		<form action="/session/login" method="POST">

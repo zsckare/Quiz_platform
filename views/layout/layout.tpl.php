@@ -3,8 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title><?=$title ?></title>
-	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-	  <link rel="stylesheet" href="/assets/css/styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+	<link rel="stylesheet" href="/assets/css/styles.css">
+	<link rel="stylesheet" href="/assets/css/messages.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body class="blue-grey lighten-5" >
 		
@@ -41,5 +43,7 @@
 	
 	<script src="http://code.jquery.com/jquery-2.2.0.min.js" ></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+	<script src="/assets/js/main.js" ></script>
+	<script src="/assets/js/messages.js" ></script>
 </body>
 </html>

@@ -26,6 +26,25 @@
         return $this->rows;
 
     }
+
+    public function getBySubject($value = null)
+    {
+        $query = $this->consult->getConsultar("
+            SELECT *
+            FROM quiz
+            WHERE id_subject = '$value'
+        ");
+
+        while($row = $query->fetch_array(MYSQLI_ASSOC)){
+            $this->rows[] = $row;
+        }
+
+        return $this->rows;
+
+    }
+
+
+
     public function getAll()
     {
         $query = $this->consult->getConsultar("
@@ -40,19 +59,19 @@
         return $this->rows;
 
     }
-    public function create($user, $correo, $values = array())
+    public function create($values = array())
     {
       extract($values);
       $pass = Security::getEncrypt($password);
       if($this->consult->getConsultar("
-              INSERT INTO users
-              (name, last_name, email, password, type)
+              INSERT INTO quiz
+              (id_subject, name, start_date, id_user)
               VALUES
-              ('$name', '$last_name', '$email' ,'$pass','$type')
+              ('$id_subject', '$name', '$start_date','$id_user')
           "))
       {
          Cookies::set("complete","Se ha creado el usuario correctamente","20-s");
-         Redirection::go("user");
+         Redirection::go("last/?option=1");
       }else{
          Cookies::set("alert","Error: por algun motivo no se pudo crear el usuario intenta de nuevo","20-s");
          Redirection::go("user");

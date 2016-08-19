@@ -3,7 +3,7 @@
 
 Configuracion para el virtual host
 
-Se debe de agregar el archivo htacess
+si no funciona las rutas se debe de verificar el archivo .htacess
 
 
 <VirtualHost *:80>

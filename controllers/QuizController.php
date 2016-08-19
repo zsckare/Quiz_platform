@@ -1,6 +1,6 @@
 <?php
 session_start();
-class SubjectController{
+class QuizController{
 
     public function indexAction($hola="hola")
     {
@@ -26,22 +26,24 @@ class SubjectController{
     {
       	
       	if (isset($_POST['name'])) {
-            $consulta = new SubjectModel();
+            $consulta = new QuizModel();
             
             return $consulta->create([
                 "name"=> $_POST['name'],
-                "code"=> $_POST['code']
+                "start_date" => $_POST['start_date'],
+                "id_subject" => $_POST['id_subject'],
+                "id_user" => $_SESSION['id_user']
                 ]);
         }
 
 
-        return new View("subject/create", ["title" => "Framework", "layout" => "on", "nameLayout" => "layout"]);
     }
+
     public function readAction($hola="hola")
     {	
     	$materias = new SubjectModel();
         $inscritos = new EnrolledModel();
-        $quiz = new QuizModel();
+        
     	$values = $materias->get($_REQUEST['subject']);
     	$name = null;
         $code = null;
@@ -54,9 +56,9 @@ class SubjectController{
 
         $ids = $inscritos->get($code);
 
-        $quizes = $quiz->getBySubject($_REQUEST['subject']);
+        
 
-        return new View("subject/read", ["title" => "Framework", "layout" => "on", "nameLayout" => "layout", "values"=>$name, "ids"=>$ids,"subject_id" =>$_REQUEST['subject'], "quiz"=>$quizes]);
+        return new View("subject/read", ["title" => "Framework", "layout" => "on", "nameLayout" => "layout", "values"=>$name, "ids"=>$ids,"subject_id" =>$_REQUEST['subject']]);
     }
     public function updateAction($hola="hola")
     {

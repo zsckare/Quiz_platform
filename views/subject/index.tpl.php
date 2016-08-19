@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row card padding-largo">
 	<div class="row">
 		<h3 class="center-align">
 			Materias
@@ -19,7 +19,7 @@
 									<tr>
 										<td><?= $row['name'] ?></td>
 										<td><?= $row['code'] ?></td>
-										<td>
+										<td class="right" >
 											<a href="/subject/read/?subject=<?= $row['id_subject'] ?>">Ver</a>
 											<a href="">Editar</a>
 											<a href="">Borrar</a>
@@ -34,3 +34,4 @@
 	</div>
 
 </div>
+
