@@ -49,7 +49,6 @@ class SubjectController{
 		foreach ($values as $row) {
 			$name = $row['name'];
             $code = $row['code'];
-
 		}
 
         $ids = $inscritos->get($code);
